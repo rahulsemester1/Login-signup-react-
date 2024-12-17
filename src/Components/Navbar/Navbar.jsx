@@ -25,13 +25,14 @@ function Navbar() {
     
       <div className="navbar">
       <div className="navbar-container">
-        <a href="#" className="navbar-logo text-3xl">Shopper</a>
+        <a href="#" className="navbar-logo text-3xl hover:text-orange-400">Shopper</a>
         <ul className="navbar-links ">
          {/* <NavLink to="/" style={getActiveLink}>Home</NavLink> */}
          <NavLink to="/user" style={getActiveLink}>User Details</NavLink>
          <NavLink to="/product" style={getActiveLink}>Product</NavLink>
          <NavLink to="/about" style={getActiveLink}>About</NavLink>
          <NavLink to="/dashboard" style={getActiveLink}>Dashboard</NavLink>
+        
         
         </ul>
         {/* { 

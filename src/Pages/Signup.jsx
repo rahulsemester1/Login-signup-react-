@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 function Signup() {
-// let[newState,dispatch]=useReducer(reducer,initialVal);
-let [input,setInput]=useState({name:"",email:"",password:""})
+let [input,setInput]=useState({name:"",email:"",password:"",role:"user",online:false})
 let navigate=useNavigate();   
 
 function navigateButton(value){
@@ -24,8 +23,8 @@ function navigateButton(value){
    }
   return (
    <>
-   <div className='min-w-screen h-screen flex justify-center items-center bg-slate-100 '>
-   <div className='flex justify-center border rounded-xl bg-white w-[30rem] h-[600px] py-20  '>
+   <div className='min-w-screen h-screen flex justify-center items-center bg-slate-100  '>
+   <div className='flex justify-center border rounded-xl bg-white w-[30rem] h-[600px] py-20 shadow-lg mt-4'>
      
       <form onSubmit={preventSubmit}>
 
@@ -58,7 +57,7 @@ function navigateButton(value){
 </div>
 
 <div className='my-5'>       
-     <button className='h-12 w-[350px] bg-blue-600 my-3 rounded text-white' type="submit">Sign up</button>
+     <button className='h-12 w-[350px] bg-orange-600 my-3 rounded text-white' type="submit">Sign up</button>
      <p>Already have an account? <span className='underline text-blue-500 cursor-pointer' onClick={()=>navigateButton("login")}>Login here</span>  </p>
  </div>    
     

@@ -2,7 +2,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Auth0 from './Pages/Auth0/Auth0'
-import Form from './Components/Form/Form.jsx'
+import {Form} from './Components/Form/Form.jsx'
 import { BrowserRouter as Router,RouterProvider,createRoutesFromElements,Routes,Route,Navigate } from 'react-router-dom'
 import Product from './Pages/Product'
 import Home from './Pages/Home'
@@ -10,6 +10,7 @@ import About from './Pages/About'
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 import Dashboard from './Pages/Dashboard'
+import UserDetail from './Pages/UserDetail.jsx'
 import User from './Pages/User'
 import Layout from './Components/Layout'
 import ProtectedRoutes from './Components/Protected/ProtectedRoutes.jsx'
@@ -17,6 +18,7 @@ import { useAuth } from './Context/ContextProvider.jsx'
 import Admin from './Components/Protected/Admin.jsx'
 import PublicRoute from './Components/Protected/PublicRoute.jsx'
 import UserRole from './Components/Protected/UserRole.jsx'
+import Layout2 from "./Components/Layout2.jsx"
 
 
 function App() {
@@ -41,8 +43,12 @@ return (
       <Route  element={<ProtectedRoutes/>}> 
       <Route  element={<Admin/>}>  {/* Admin */}
         
-      <Route path="dashboard" element={<Dashboard/>}/> 
-      <Route path="dashboard/:dashboardId" element={<Dashboard/>}/> 
+      
+      <Route  element={<Layout2/>}> 
+        <Route path="dashboard" element={<Dashboard/>}/> 
+        <Route path="dashboard/:dashboardId" element={<Dashboard/>}/> 
+        <Route path="userdetail" element={<UserDetail/>}/> 
+      </Route>  
      
       </Route>
 

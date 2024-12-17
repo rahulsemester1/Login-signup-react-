@@ -1,13 +1,20 @@
 import React,{useState,createContext} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 import {useAuth} from "../../Context/ContextProvider"
 
+// function defaultLoggedIn(){
+//    let {inputVal,setInput}=useAuth();
+//    let val=localStorage.getItem(inputVal.password).online;
+//    return val;
+// }
+
 
 function Form() {
-   let [inputVal,setInput]=useState({name:"",email:"",password:"",isLogged:""})
+   // let [inputVal,setInput]=useState({name:"",email:"",password:"",isLogged:""})
+
    let navigate=useNavigate();   
-   let {isLoggedIn, setIsLoggedIn,userRole, setuserRole}=useAuth();
+   let {isLoggedIn, setIsLoggedIn,userRole, setuserRole,inputVal,setInput,online,setOnline}=useAuth();
    
 
    function navigateButton(value){
@@ -23,10 +30,16 @@ function Form() {
       let val=JSON.parse(localStorage.getItem(inputVal.password));
       if((val) && (val.password===inputVal.password)){
          let roles=JSON.parse(localStorage.getItem(inputVal.password)).role;            //role purpose
+
+         // localStorage.setItem('loggedinUserRole',roles);
          setuserRole(roles);
          setIsLoggedIn(true);
          if(roles==="admin"){
-            navigate(`/dashboard/${val.password}`);
+             navigate(`/dashboard/${val.password}`,{
+               state:{
+                  user:val.name,
+               }
+             });
          }else{
             navigate(`/user/${val.password}`);
          }
@@ -38,12 +51,14 @@ function Form() {
       else{
          alert("Wrong Credentials, please signup");
       }
+
+      
       
    }
   return (
    <>
-   <div className='min-w-screen h-screen flex justify-center items-center bg-slate-100 '>
-   <div className='flex justify-center border rounded-xl bg-white w-[30rem] h-[600px] py-20  '>
+   <div className='min-w-screen h-screen flex justify-center items-center bg-slate-100  '>
+   <div className='flex justify-center border rounded-xl bg-white w-[30rem] h-[600px] py-20 shadow-lg my-4'>
      
             <form onSubmit={submitVal} >
             <div>
@@ -80,7 +95,7 @@ function Form() {
 
 <div className='my-5'>   
        
-       <button className='h-12 w-[350px] bg-blue-600 my-3 rounded text-white' type="submit">Login</button>   
+       <button className='h-12 w-[350px] bg-orange-600 my-3 rounded text-white' type="submit">Login</button>   
        <p>Don't Have any account? <span className='underline text-blue-500 cursor-pointer' onClick={()=>navigateButton("signup")}>Signup here</span>  </p>
  </div>      
     
@@ -91,4 +106,12 @@ function Form() {
   )
 }
 
-export default Form
+// function defaultLoggedIn(){
+//    let {inputVal,setInput}=useAuth();
+   
+//    let val=JSON.parse(localStorage.getItem(inputVal.password)).online;
+//     return val?val:false;
+//     console.log(val);
+//  }
+
+export {Form}

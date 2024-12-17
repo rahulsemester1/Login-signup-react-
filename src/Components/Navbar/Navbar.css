@@ -39,17 +39,18 @@
  
  .login-button {
    padding: 0.5rem 1rem;
-   background-color: #00bcd4;
+   background-color: rgb(231, 123, 83);
    color: white;
    border: none;
    border-radius: 5px;
    cursor: pointer;
    font-size: 1rem;
    transition: background-color 0.3s;
+   font-weight:bolder;
  }
  
  .login-button:hover {
-   background-color: #008c9e;
+   background-color: rgb(244, 73, 73);
  }
  .user-name{
   color:white;

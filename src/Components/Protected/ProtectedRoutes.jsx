@@ -4,9 +4,11 @@ import {useAuth} from "../../Context/ContextProvider"
 
 
 function ProtectedRoutes() {
-   let {isLoggedIn,setIsLoggedIn}=useAuth();
+   let {isLoggedIn,setIsLoggedIn}=useAuth();   
    let navigate=useNavigate();
-
+// debugger
+// console.log(isLoggedIn)
+// console.log(localStorage.getItem('loggedinUserRole'));
    return isLoggedIn?<Outlet/>:<Navigate to="/login"/>
 
    // useEffect(()=>{
