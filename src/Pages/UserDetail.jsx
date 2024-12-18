@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
-
+import { useNavigate } from 'react-router-dom'
 function UserDetail() {
- 
+ let navigate=useNavigate();
  let [user,setUser]=useState({name:"",email:"",age:null,courses:"",gender:"",city:"",state:"",skills:[],address:"",phone:null,role:""})
 
  let handleChange=(e)=>{
       setUser({...user,[e.target.name]:e.target.value})  
-     
  }
 
  let handleArray=(e)=>{
-  user.skills.push(e.target.value);
+   user.skills.push(e.target.value);
  }
 
  let submitVal=(e)=>{
@@ -18,12 +17,13 @@ function UserDetail() {
   alert("value added")
   console.log(user);
   localStorage.setItem(user.phone,JSON.stringify(user))
+  navigate("/dashboard")
     
  }
 
   return (
     <div >
-    <div className='absolute top-24 left-[475px] bg-slate-100 shadow-orange-800 w-[550px] h-[950px] border rounded-3xl '>
+    <div className='absolute top-24 left-[475px] bg-slate-100 shadow-orange-800 w-[580px] h-[950px] border rounded-3xl '>
     <h1 className='text-center font-semibold mb-6 text-lg border-b-2 border-slate-200 border rounded-t-3xl h-20 bg-gradient-to-r from-orange-600 to-orange-300 text-white flex items-center justify-center'>Add User</h1>
       <form onSubmit={submitVal} className='px-4'>
       <div className='p-2 m-2'>
@@ -38,8 +38,6 @@ function UserDetail() {
            placeholder='Enter Name'/>
       </div>
 
-      
-      
 
       <div className='p-2 m-2 relative'>
       <label for="email" className="font-medium ml-2">E-mail</label>

@@ -18,9 +18,9 @@ function Sidebar(val) {
   return (
    <div className='inline-block bg-black h-[1000px] relative w-36 '>
       <div >
-         <span className="material-symbols-outlined bg-white">
+         {/* <span className="material-symbols-outlined bg-white">
             density_medium
-         </span>
+         </span> */}
       </div>
       
       <div className=' text-white p-3'>
